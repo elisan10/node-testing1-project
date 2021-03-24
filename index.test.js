@@ -114,16 +114,36 @@ describe("[Exercise 6] Car", () => {
 });
 
 describe("[Exercise 7] isEvenNumberAsync", () => {
-  it("[19] resolves true if passed an even number", () => {
+  it("[19] resolves true if passed an even number", async () => {
     // ✨ test away
+    const evenNumber = await utils.isEvenNumberAsync(2);
+    expect(evenNumber).toBe(true);
   });
-  it("[20] resolves false if passed an odd number", () => {
+  it("[20] resolves false if passed an odd number", async () => {
     // ✨ test away
+    const oddNumber = await utils.isEvenNumberAsync(3);
+    expect(oddNumber).toBe(false);
   });
-  it('[21] rejects an error with the message "number must be a number" if passed a non-number type', () => {
+  it('[21] rejects an error with the message "number must be a number" if passed a non-number type', async () => {
     // ✨ test away
+    utils
+      .isEvenNumberAsync("foo")
+      .then((string) => {
+        console.log(string);
+      })
+      .catch((error) => {
+        expect(error).toEqual("number must be a number");
+      });
   });
-  it('[22] rejects an error with the message "number must be a number" if passed NaN', () => {
+  it('[22] rejects an error with the message "number must be a number" if passed NaN', async () => {
     // ✨ test away
+    utils
+      .isEvenNumberAsync(NaN)
+      .then((notNumber) => {
+        console.log(notNumber);
+      })
+      .catch((error) => {
+        expect(error).toEqual("number must be a number");
+      });
   });
 });

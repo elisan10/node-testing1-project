@@ -172,6 +172,13 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
+  // typeof number === "string";
+  // return Promise.resolve(number);
+  if (typeof number === "number") {
+    return Promise.resolve(number % 2 === 0 ? true : false);
+  } else {
+    return Promise.reject("number must be a number");
+  }
 }
 
 module.exports = {

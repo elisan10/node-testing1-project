@@ -51,12 +51,21 @@ describe("[Exercise 4] Counter", () => {
   });
   it("[6] the FIRST CALL of counter.countDown returns the initial count", () => {
     // ✨ test away
+    expect(counter.initialNumber).toEqual(3);
   });
   it("[7] the SECOND CALL of counter.countDown returns the initial count minus one", () => {
     // ✨ test away
+    const input = counter.initialNumber;
+    const expected = 2;
+    const actual = counter.countDown(input);
+    expect(actual).toBe(expected);
   });
   it("[8] the count eventually reaches zero but does not go below zero", () => {
     // ✨ test away
+    const input = -1;
+    const expected = 0;
+    const actual = counter.countDown(input);
+    expect(actual).toBe(expected);
   });
 });
 

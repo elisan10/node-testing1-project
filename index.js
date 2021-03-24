@@ -10,7 +10,7 @@ function trimProperties(obj) {
   // ✨ implement
   const trimmedObj = Object.keys(obj).reduce((object, string) => {
     object[string] = obj[string].trim();
-    return object;
+    return { ...object };
   }, {});
 
   return trimmedObj;
@@ -26,6 +26,12 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  const trimmedObj = Object.keys(obj).reduce((object, string) => {
+    object[string] = obj[string].trim();
+    return object;
+  }, {});
+
+  return trimmedObj;
 }
 
 /**

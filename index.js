@@ -86,6 +86,8 @@ class Seasons {
    */
   constructor() {
     // ✨ initialize whatever properties are needed
+    this.memory = -1;
+    this.seasons = ["summer", "fall", "winter", "spring"];
   }
 
   /**
@@ -102,6 +104,13 @@ class Seasons {
    */
   next() {
     // ✨ implement
+    // 4 seasons, continous loop,
+    if (this.memory === 3) {
+      this.memory = -1;
+    }
+    this.memory = this.memory += 1;
+
+    return this.seasons[this.memory];
   }
 }
 
@@ -113,8 +122,10 @@ class Car {
    * @param {number} mpg - miles the car can drive per gallon of gas
    */
   constructor(name, tankSize, mpg) {
+    this.name = name;
     this.odometer = 0; // car initilizes with zero miles
     this.tank = tankSize; // car initiazes full of gas
+    this.mpg = mpg;
     // ✨ initialize whatever other properties are needed
   }
 
@@ -133,6 +144,13 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    if (this.tank === 0) {
+      return this.tank;
+    } else {
+      this.tank -= distance / this.mpg;
+      this.odometer += distance;
+      return this.odometer;
+    }
   }
 
   /**
@@ -148,6 +166,9 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    if (this.tank < 20 || gallons > 20) {
+      return this.tank;
+    }
   }
 }
 
@@ -172,8 +193,6 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
-  // typeof number === "string";
-  // return Promise.resolve(number);
   if (typeof number === "number") {
     return Promise.resolve(number % 2 === 0 ? true : false);
   } else {

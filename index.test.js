@@ -76,21 +76,41 @@ describe("[Exercise 5] Seasons", () => {
   });
   it('[9] the FIRST call of seasons.next returns "summer"', () => {
     // ✨ test away
+    expect(seasons.next()).toMatch("summer");
   });
   it('[10] the SECOND call of seasons.next returns "fall"', () => {
     // ✨ test away
+    seasons.next();
+    expect(seasons.next()).toMatch("fall");
   });
   it('[11] the THIRD call of seasons.next returns "winter"', () => {
     // ✨ test away
+    seasons.next();
+    seasons.next();
+    expect(seasons.next()).toMatch("winter");
   });
   it('[12] the FOURTH call of seasons.next returns "spring"', () => {
     // ✨ test away
+    seasons.next();
+    seasons.next();
+    seasons.next();
+
+    expect(seasons.next()).toMatch("spring");
   });
   it('[13] the FIFTH call of seasons.next returns again "summer"', () => {
     // ✨ test away
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    seasons.next();
+    expect(seasons.next()).toMatch("summer");
   });
   it('[14] the 40th call of seasons.next returns "spring"', () => {
     // ✨ test away
+    for (let i = 0; i < 39; i++) {
+      seasons.next();
+    }
+    expect(seasons.next()).toMatch("spring");
   });
 });
 
@@ -101,9 +121,14 @@ describe("[Exercise 6] Car", () => {
   });
   it("[15] driving the car returns the updated odometer", () => {
     // ✨ test away
+    expect(focus.drive(100)).toBe(100);
+    expect(focus.odometer).toBe(100);
   });
   it("[16] driving the car uses gas", () => {
     // ✨ test away
+    focus.drive(100);
+    const expected = 20 - 100 / 30;
+    expect(focus.tank).toBe(expected);
   });
   it("[17] refueling allows to keep driving", () => {
     // ✨ test away
